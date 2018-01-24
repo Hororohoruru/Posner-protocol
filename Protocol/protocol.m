@@ -9,7 +9,7 @@ inval_count = 1;                          %These two indices will determine
 for n = 1:trials
     
     rand_cond = rand(1);                  %These two random numbers will determine
-	rand_delay = rand(1);                 %the condition and delay of each trial
+	rand_delay = rand(1);             %the condition and delay of each trial
     
     if rand_delay <= 0.5                  %Determination of the delay
         delay = 0.1;
@@ -17,17 +17,17 @@ for n = 1:trials
         delay = 0.3;
     end
     
-    if rand_cond <= 0.5                        %Valid trial, response time
-        rt = valid_trial(sq, cell, delay);     %is stored in the first column
-        proto_valid_mat(val_count, 1) = rt;    %and delay in the second of 
+    if rand_cond <= 0.5                                %Valid trial, response time
+        rt = valid_trial(sq, cell, delay);             %is stored in the first column
+        proto_valid_mat(val_count, 1) = rt;            %and delay in the second of 
 		proto_valid_mat(val_count, 2) = delay; %the matrix
 		val_count = val_count + 1;
     else
         [rt, hor, ver] = invalid_trial(sq, cell, delay);
-        proto_invalid_mat(inval_count, 1) = rt;     %Invalid trial. Same thing,
-        proto_invalid_mat(inval_count, 2) = delay;  %but it stores the horizontal,
-        proto_invalid_mat(inval_count, 3) = hor;    %vertical and total distance
-        proto_invalid_mat(inval_count, 4) = ver;    %between cue and target
+        proto_invalid_mat(inval_count, 1) = rt;        %Invalid trial. Same thing,
+        proto_invalid_mat(inval_count, 2) = delay;     %but it stores the horizontal,
+        proto_invalid_mat(inval_count, 3) = hor;       %vertical and total distance
+        proto_invalid_mat(inval_count, 4) = ver;       %between cue and target
         proto_invalid_mat(inval_count, 5) = hor + ver;
         inval_count = inval_count + 1;
     end
